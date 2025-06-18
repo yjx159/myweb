@@ -1,15 +1,13 @@
 
-var num1=20;
-var num2=30;
-str="HelloWorld";
-  var str1=str.slice(0,6);
-  console.log(str1);
-  str1=str.concat("JavaScript");
-console.log(str1);
-
-  console.log(Array.isArray(str1));
-  function add(a,b){
-  console.log("Adding two numbers");
-  
-    return a+b;
-  }
+var h2=document.getElementsByClassName('h2');
+var sloganText="Welcome to our website!";
+h2[0].addEventListener('mouseover',function1);
+function function1() {
+  alert(sloganText);
+}
+ var more=document.getElementById('more-info');
+ more.addEventListener('click',function2);
+ function function2(){
+  window.location.href="window.html";
+  alert("You will be redirected to the window page.");
+ }
