@@ -2,62 +2,217 @@
 <html lang="zh-cn">
 <head>
   <meta charset="UTF-8">
-  <title>自定义弹窗示例</title>
+  <title>免费歌曲下载网页</title>
+  <marquee>看什么看！还不赶紧下载</marquee>
   <style>
-    /* 弹窗遮罩层 */
-    .modal-mask {
-      display: none;
-        position: fixed;
-      left: 0; top: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 999;
-      justify-content: center;
-      align-items: center;
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+      background-image: url(images/帅哥2.JPG);
     }
-    /* 弹窗内容 */
-    .modal-box {
-      background: #fff;
-      padding: 30px 40px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    h1 {
       text-align: center;
+      color: #333;
     }
-    .modal-btn {
-      margin-top: 20px;
-      padding: 8px 20px;
-      border: none;
-      background: #485652;
+    .song-list {
+      list-style-type: none;
+      padding: 10px;
+    }
+    .song-list li {
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .download-btn {
+      background: #28a745;
       color: #fff;
+      padding: 10px 15px;
+      border: none;
       border-radius: 4px;
       cursor: pointer;
+      margin-left: 500px;
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+
+    }
+    #button1, #button2, #button3, #button4 {
+      background: #007bff;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 10px;
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+    justify-content: center;
+    }
+    .song-list li {
+      background:burlywood;
+    }
+    .song-list li a{
+      text-decoration: none;
+    }
+    marquee{
+      color: red;
+      font-weight: bold;
+      font-size: 150%;
     }
   </style>
 </head>
 <body>
-  <button id="showModal">显示自定义弹窗</button>
+  <h1>免费歌曲下载</h1>
+  <audio src="music/卡农.mp3" controls  autoplay loop></audio>
+  <ul class="song-list">
+    <li>
+      <span>泪桥 - 严建雄</span>
+      <a href="泪桥-严建雄.m4a" download>
+        <button class="download-btn">下载</button>
+      </a>
+      <button id="button1">播放音乐</button>
 
-  <!-- 自定义弹窗结构 -->
-  <div class="modal-mask" id="modalMask">
-    <div class="modal-box">
-      <p>这是一个自定义弹窗！</p>
-      <button class="modal-btn" id="closeModal">确定</button>
-    </div>
-  </div>
+    </li>
+    <li>
+      <span>小镇姑娘 -严建雄</span>
+      <a href="music/小镇姑娘-严建雄.m4a" download>
+        <button class="download-btn">下载</button>
+      </a>
+      <button id="button2">播放音乐</button>
+    </li>
+    <li>
+      <span>不将就-严建雄</span>
+      <a href="music/不将就-严建雄.m4a" download>
+        <button class="download-btn">下载</button>
+      </a>
+      <button id="button3">播放音乐</button>
+    </li>
+    <li><span>程艾影-严建雄</span>
+      <a href="music/程艾影-严建雄.m4a" download>
+        <button class="download-btn">下载</button>
+      </a>
+      <button id="button4">播放音乐</button>
+    </li>
+  </ul>
+
 
   <script>
-    // 获取元素
-    const showBtn = document.getElementById('showModal');
-    const mask = document.getElementById('modalMask');
-    const closeBtn = document.getElementById('closeModal');
+    var button1=document.getElementById("button1");
+     var audio1 = new Audio('music/泪桥-严建雄.m4a');
+     var temp=0;
+    button1.onclick=function(){
 
-    // 显示弹窗
-    showBtn.onclick = function() {
-      mask.style.display = 'flex';
-    };
-    // 关闭弹窗
-    closeBtn.onclick = function() {
-      mask.style.display = 'none';
-    };
+      if(audio1.paused)
+      {
+        if(temp==0)
+        {
+          temp=1;
+        }
+        else
+        {
+          return ;
+        }
+        audio1.play();
+        audio1.controls=true;
+        document.body.appendChild(audio1);
+        button1.textContent = "暂停音乐";
+      }
+      else
+      {
+        audio1.pause();
+        document.body.removeChild(audio1);
+        button1.textContent="播放音乐";
+        temp=0;
+      }
+    }
+   var audio2 =new Audio('music/小镇姑娘-严建雄.m4a');
+    var button2=document.getElementById("button2");
+    button2.onclick=function(){
+    
+      if(audio2.paused)
+      {
+        if(temp==0)
+        {
+          temp=1;
+        }
+        else
+        {
+          return ;
+        }
+        
+        audio2.play();
+        audio2.controls=true;
+        document.body.appendChild(audio2);
+        button2.textContent = "暂停音乐";
+      }
+      else
+      {
+        audio2.pause();
+        document.body.removeChild(audio2);
+        button2.textContent="播放音乐";
+        temp=0;
+      }
+    }
+  var audio3=new Audio('music/不将就-严建雄.m4a');
+  var button3=document.getElementById("button3");
+    button3.onclick=function(){
+    
+      if(audio3.paused)
+      {
+        if(temp==0)
+        {
+          temp=1;
+        }
+        else
+        {
+          return ;
+        }
+        
+        audio3.play();
+        audio3.controls=true;
+        document.body.appendChild(audio3);
+        button3.textContent = "暂停音乐";
+      }
+      else
+      {
+        audio3.pause();
+        document.body.removeChild(audio3);
+        button3.textContent="播放音乐";
+        temp=0;
+      }
+    }
+    var audio4=new Audio('music/程艾影-严建雄.m4a');
+    var button4=document.getElementById("button4");
+    button4.onclick=function(){
+
+      if(audio4.paused)
+      {
+        if(temp==0)
+        {
+          temp=1;
+        }
+        else
+        {
+          return ;
+        }
+
+        audio4.play();
+        audio4.controls=true;
+        document.body.appendChild(audio4);
+        button4.textContent = "暂停音乐";
+      }
+      else
+      {
+        audio4.pause();
+        document.body.removeChild(audio4);
+        button4.textContent="播放音乐";
+        temp=0;
+      }
+    }
   </script>
 </body>
 </html>
