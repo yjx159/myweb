@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>自定义弹窗示例</title>
+  <style>
+    /* 弹窗遮罩层 */
+    .modal-mask {
+      display: none;
+        position: fixed;
+      left: 0; top: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+    }
+    /* 弹窗内容 */
+    .modal-box {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    .modal-btn {
+      margin-top: 20px;
+      padding: 8px 20px;
+      border: none;
+      background: #485652;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button id="showModal">显示自定义弹窗</button>
+
+  <!-- 自定义弹窗结构 -->
+  <div class="modal-mask" id="modalMask">
+    <div class="modal-box">
+      <p>这是一个自定义弹窗！</p>
+      <button class="modal-btn" id="closeModal">确定</button>
+    </div>
+  </div>
+
+  <script>
+    // 获取元素
+    const showBtn = document.getElementById('showModal');
+    const mask = document.getElementById('modalMask');
+    const closeBtn = document.getElementById('closeModal');
+
+    // 显示弹窗
+    showBtn.onclick = function() {
+      mask.style.display = 'flex';
+    };
+    // 关闭弹窗
+    closeBtn.onclick = function() {
+      mask.style.display = 'none';
+    };
+  </script>
+</body>
+</html>
